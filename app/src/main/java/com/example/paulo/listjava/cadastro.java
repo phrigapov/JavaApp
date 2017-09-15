@@ -37,6 +37,8 @@ public class cadastro extends AppCompatActivity {
 
             db.insert("lista",null,valores);
 
+            finish();
+
 
             }
         });

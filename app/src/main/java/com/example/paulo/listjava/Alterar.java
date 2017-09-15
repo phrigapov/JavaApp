@@ -1,5 +1,6 @@
 package com.example.paulo.listjava;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -49,5 +50,21 @@ public class Alterar extends AppCompatActivity {
 
             }
         });
+
+        Button btnAlterar = (Button) findViewById(R.id.btnAlterar);
+        btnAlterar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer id = (Integer)extras.get("id");
+
+                ContentValues args = new ContentValues();
+                EditText edtNome = (EditText) findViewById(R.id.editNomeA);
+                args.put("nome", edtNome.getText().toString());
+                db.update("lista", args, "id=?", new String[]{id.toString()});
+
+                finish();
+            }
+        });
+
     }
 }
